@@ -590,6 +590,19 @@ class PHPExcel
     }
 
     /**
+     * Get all sheets non-block
+     *
+     * @return Generator
+     */
+    public function getAllSheetsGenerator()
+    {
+        $sheetCount = count($this->workSheetCollection);
+        for($i = 0; $i < $sheetCount; ++$i) {
+            yield $this->workSheetCollection[$i];
+        }
+    }
+
+    /**
      * Get all sheets
      *
      * @return PHPExcel_Worksheet[]
