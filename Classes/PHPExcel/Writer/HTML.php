@@ -405,7 +405,7 @@ class PHPExcel_Writer_HTML extends PHPExcel_Writer_Abstract implements PHPExcel_
         // Fetch sheets
         $sheets = array();
         if (is_null($this->sheetIndex)) {
-            $sheets = $this->phpExcel->getAllSheets();
+            $sheets = $this->phpExcel->getAllSheetsGenerator();
         } else {
             $sheets[] = $this->phpExcel->getSheet($this->sheetIndex);
         }
@@ -519,16 +519,18 @@ class PHPExcel_Writer_HTML extends PHPExcel_Writer_Abstract implements PHPExcel_
         // Fetch sheets
         $sheets = array();
         if (is_null($this->sheetIndex)) {
-            $sheets = $this->phpExcel->getAllSheets();
+            $sheets = $this->phpExcel->getAllSheetsGenerator();
         } else {
             $sheets[] = $this->phpExcel->getSheet($this->sheetIndex);
         }
+
+        $sheetsCount = $this->phpExcel->getSheetCount();
 
         // Construct HTML
         $html = '';
 
         // Only if there are more than 1 sheets
-        if (count($sheets) > 1) {
+        if ($sheetsCount > 1) {
             // Loop all sheets
             $sheetId = 0;
 
@@ -824,7 +826,7 @@ class PHPExcel_Writer_HTML extends PHPExcel_Writer_Abstract implements PHPExcel_
         // Fetch sheets
         $sheets = array();
         if (is_null($this->sheetIndex)) {
-            $sheets = $this->phpExcel->getAllSheets();
+            $sheets = $this->phpExcel->getAllSheetsGenerator();
         } else {
             $sheets[] = $this->phpExcel->getSheet($this->sheetIndex);
         }

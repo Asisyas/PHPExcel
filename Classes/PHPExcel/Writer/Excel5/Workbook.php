@@ -476,8 +476,8 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
         $offset            = $this->_datasize;
 
         // add size of Workbook globals part 2, the length of the SHEET records
-        $total_worksheets = count($this->phpExcel->getAllSheets());
-        foreach ($this->phpExcel->getWorksheetIterator() as $sheet) {
+        $total_worksheets = count($this->phpExcel->getSheetCount());
+        foreach ($this->phpExcel->getAllSheetsGenerator() as $sheet) {
             $offset += $boundsheet_length + strlen(PHPExcel_Shared_String::UTF8toBIFF8UnicodeShort($sheet->getTitle()));
         }
 

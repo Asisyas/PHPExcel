@@ -241,7 +241,7 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
         $lastReducedSpId = 0;
         $lastSpId = 0;
 
-        foreach ($this->phpExcel->getAllsheets() as $sheet) {
+        foreach ($this->phpExcel->getAllSheetsGenerator() as $sheet) {
             // sheet index
             $sheetIndex = $sheet->getParent()->getIndex($sheet);
 
@@ -404,7 +404,7 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
 
         // any drawings in this workbook?
         $found = false;
-        foreach ($this->phpExcel->getAllSheets() as $sheet) {
+        foreach ($this->phpExcel->getAllSheetsGenerator() as $sheet) {
             if (count($sheet->getDrawingCollection()) > 0) {
                 $found = true;
                 break;
@@ -431,7 +431,7 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
         $totalCountShapes = 0;
         $countDrawings = 0;
 
-        foreach ($this->phpExcel->getAllsheets() as $sheet) {
+        foreach ($this->phpExcel->getAllSheetsGenerator() as $sheet) {
             $sheetCountShapes = 0; // count number of shapes (minus group shape), in sheet
 
             if (count($sheet->getDrawingCollection()) > 0) {
@@ -456,7 +456,7 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
         $dggContainer->setBstoreContainer($bstoreContainer);
 
         // the BSE's (all the images)
-        foreach ($this->phpExcel->getAllsheets() as $sheet) {
+        foreach ($this->phpExcel->getAllSheetsGenerator() as $sheet) {
             foreach ($sheet->getDrawingCollection() as $drawing) {
                 if ($drawing instanceof PHPExcel_Worksheet_Drawing) {
                     $filename = $drawing->getPath();
